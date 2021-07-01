@@ -1,5 +1,6 @@
 package com.revature.runners;
 
+import com.revature.pages.LoginPage;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -17,13 +18,14 @@ import java.io.File;
 public class BasicRunner {
 
     public static WebDriver driver = null;
-
+    public static LoginPage loginPage = null;
 
     @BeforeClass
     public static void setup() {
         File file = new File("src/test/resources/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-        driver = new ChromeDriver();// ChomeDriver is an implementation of a web driver interface
+        driver = new ChromeDriver();
+        loginPage = new LoginPage(driver);
     }
 
     @AfterClass
