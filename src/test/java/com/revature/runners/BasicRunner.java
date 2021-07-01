@@ -1,6 +1,6 @@
 package com.revature.runners;
 
-import com.revature.pages.ProfilePage;
+import com.revature.pages.LoginPage;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -19,17 +19,14 @@ import java.util.concurrent.TimeUnit;
 public class BasicRunner {
 
     public static WebDriver driver = null;
-    public static ProfilePage profilePage = null;
-
+    public static LoginPage loginPage = null;
 
     @BeforeClass
     public static void setup() {
         File file = new File("src/test/resources/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
-        profilePage = new ProfilePage(driver);
-
-     //   BasicRunner.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        loginPage = new LoginPage(driver);
     }
 
     @AfterClass
