@@ -5,8 +5,8 @@ Feature: Multiple Customer Orders Should Be Supported
 
 
   Scenario: The Customer is on the Customer Profile Page 1
-    #When I click on the Mood button
- #   Then A drop down list of  All Moods should appear
+    When I click on the Mood button
+#    Then A drop down list of  All Moods should appear
 #    When I Select on a Mood
 #    Then I should see a recommendation on the recommendations table based on the mood
 #    When I Select an Item from the Recommendations table
@@ -14,7 +14,7 @@ Feature: Multiple Customer Orders Should Be Supported
 #    Then The Item should be Removed
 #    When I enter a number into quantity field for a recommendation
 #    Then The price value should change based on the quantity
-
+#
 #
 #    Scenario: The Customer is On The Customer Profile Page 2
 #      When I click on a Category from the drop down list

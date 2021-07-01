@@ -5,17 +5,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class OrderPage {
+public class ProfilePage {
 
     private WebDriver driver;
 
-    public OrderPage(WebDriver driver) {
+    public ProfilePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
     }
-//
-//    @FindBy(id ="drop" )
-//    public WebElement drop;
+
+    @FindBy(id ="dropdown" )
+    public WebElement dropdown;
 
 }
