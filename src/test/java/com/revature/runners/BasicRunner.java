@@ -4,6 +4,7 @@ import com.revature.pages.CreateAccountPage;
 import com.revature.pages.CustomerDashboardPage;
 import com.revature.pages.HomePage;
 import com.revature.pages.LoginPage;
+import com.revature.pages.OrderPage;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -27,6 +28,7 @@ public class BasicRunner {
     public static CreateAccountPage createAccountPage = null;
     public static HomePage homePage = null;
     public static CustomerDashboardPage customerDashboardPage = null;
+    public static OrderPage orderPage = null;
     public static int rowCount = 0;
     public static int orderQuantity = 0;
 
@@ -38,12 +40,14 @@ public class BasicRunner {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-web-security");
         options.addArguments("--allow-running-insecure-content");
+        options.addArguments("--start-maximized");
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         driver = new ChromeDriver(capabilities);
         loginPage = new LoginPage(driver);
         createAccountPage = new CreateAccountPage(driver);
         homePage = new HomePage(driver);
         customerDashboardPage = new CustomerDashboardPage(driver);
+        orderPage = new OrderPage(driver);
     }
 
     @AfterClass
