@@ -23,6 +23,7 @@ public class BasicRunner {
     public static WebDriver driver = null;
     public static LoginPage loginPage = null;
     public static OrderPage orderPage = null;
+    public static int rowCount = 0;
 
     @BeforeClass
     public static void setup() {

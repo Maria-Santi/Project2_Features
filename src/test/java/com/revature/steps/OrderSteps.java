@@ -19,36 +19,46 @@ public class OrderSteps {
         BasicRunner.driver.get("https://project2frontend.s3.us-east-2.amazonaws.com/employeedashboard.html");
     }
 
-
-    @When("The Employee select the order table")
-    public void the_Employee_select_the_order_table() {
-        BasicRunner.orderPage.ordersTable.click();
-
-
-    }
-
     @When("The Employee click an order from the order table")
-    public void the_Employee_click_an_order_from_the_order_table() {
+    public void the_Employee_click_an_order_from_the_order_table() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(BasicRunner.driver, 20);
         wait.until(ExpectedConditions.elementToBeClickable(BasicRunner.orderPage.firstOrderSelectButton));
         BasicRunner.orderPage.firstOrderSelectButton.click();
-
-
     }
 
     @Then("The Employee can view the details of the order")
-    public void the_Employee_can_view_the_details_of_the_order() throws InterruptedException {
-        Thread.sleep(5000);
+    public void the_Employee_can_view_the_details_of_the_order() {
         List<WebElement> tableRows = new WebDriverWait(BasicRunner.driver, 10).until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(BasicRunner.orderPage.detailsBody, By.tagName("tr")));
         Assert.assertTrue(tableRows.size()>=1);
-
-
     }
 
+    @When("The Employee clicks the fulfill order button")
+    public void the_Employee_clicks_the_fulfill_order_button() {
+        List<WebElement> tableRows = new WebDriverWait(BasicRunner.driver, 10).until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(BasicRunner.orderPage.getOrdersTable, By.tagName("tr")));
+        BasicRunner.rowCount = tableRows.size();
+        WebDriverWait wait = new WebDriverWait(BasicRunner.driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(BasicRunner.orderPage.fullfillButton));
+        BasicRunner.orderPage.fullfillButton.click();
+    }
 
+    @Then("The Order is fulfilled and removed from the order table")
+    public void the_Order_is_fulfilled_and_removed_from_the_order_table() throws InterruptedException {
+        Thread.sleep(3000);
+        List<WebElement> tableRows = new WebDriverWait(BasicRunner.driver, 10).until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(BasicRunner.orderPage.getOrdersTable, By.tagName("tr")));
+        Assert.assertTrue(tableRows.size() == BasicRunner.rowCount - 1);
+    }
 
+    @When("The Employee clicks on the logout button")
+    public void the_Employee_clicks_on_the_logout_button() {
+        WebDriverWait wait = new WebDriverWait(BasicRunner.driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(BasicRunner.orderPage.logoutButton));
+        BasicRunner.orderPage.logoutButton.click();
+    }
 
-
-
-
+    @Then("The Employee is logged out and redirected to the Homepage")
+    public void the_Employee_is_logged_out_and_redirected_to_the_Homepage() {
+        WebDriverWait wait = new WebDriverWait(BasicRunner.driver, 5);
+        wait.until(ExpectedConditions.titleIs("Git Your Java Home Page"));
+        Assert.assertEquals(BasicRunner.driver.getTitle(), "Git Your Java Home Page");
+    }
 }

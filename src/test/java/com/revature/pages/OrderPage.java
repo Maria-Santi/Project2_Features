@@ -29,4 +29,7 @@ public class OrderPage {
     @FindBy(id ="detailsBody")
     public WebElement detailsBody;
 
+    @FindBy(id = "logoutBtn")
+    public WebElement logoutButton;
+
 }
