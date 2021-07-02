@@ -12,7 +12,7 @@ import org.testng.Assert;
 public class LoginSteps {
     @Given("The User is on the Login Page")
     public void the_User_is_on_the_Login_Page() {
-        BasicRunner.driver.get("C:\\Users\\david\\Desktop\\Project2_FrontEnd\\login.html");
+        BasicRunner.driver.get("https://project2frontend.s3.us-east-2.amazonaws.com/login.html");
     }
 
     @When("The User types {string} into the username bar")
