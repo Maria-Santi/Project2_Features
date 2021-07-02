@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -44,8 +45,15 @@ public class OrderSteps {
     @Then("The Order is fulfilled and removed from the order table")
     public void the_Order_is_fulfilled_and_removed_from_the_order_table() throws InterruptedException {
         Thread.sleep(3000);
-        List<WebElement> tableRows = new WebDriverWait(BasicRunner.driver, 10).until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(BasicRunner.orderPage.getOrdersTable, By.tagName("tr")));
-        Assert.assertTrue(tableRows.size() == BasicRunner.rowCount - 1);
+        int size;
+        try {
+            List<WebElement> tableRows = new WebDriverWait(BasicRunner.driver, 3).until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(BasicRunner.orderPage.getOrdersTable, By.tagName("tr")));
+            size = tableRows.size();
+        } catch (TimeoutException e) {
+            size = 0;
+        }
+
+        Assert.assertTrue(size == BasicRunner.rowCount - 1);
     }
 
     @When("The Employee clicks on the logout button")

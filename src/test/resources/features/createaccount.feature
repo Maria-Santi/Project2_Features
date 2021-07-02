@@ -10,9 +10,9 @@ Feature: User Creates a New Account
     Then The title should be "<title>"
     Examples:
       | firstname | lastname | username | password | title |
-      | C | A | test16 | testpass | Git Your Java Customer |
-      | C | A | test17 | testpass | Git Your Java Customer |
-      | C | A | test18 | testpass | Git Your Java Customer |
+      | C | A | test1 | testpass | Git Your Java Customer |
+      | C | A | test2 | testpass | Git Your Java Customer |
+      | C | A | test3 | testpass | Git Your Java Customer |
 
 
   Scenario Outline: The Customer tries to create an account with a taken username
