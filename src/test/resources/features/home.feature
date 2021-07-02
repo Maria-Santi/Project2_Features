@@ -1,1 +1,1 @@
-Feature: The User Should Be Able To Navigate The Home Page
+#Feature: The User Should Be Able To Navigate The Home Page
