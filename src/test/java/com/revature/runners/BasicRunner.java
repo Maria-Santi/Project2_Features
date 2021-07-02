@@ -1,5 +1,8 @@
 package com.revature.runners;
 
+import com.revature.pages.CreateAccountPage;
+import com.revature.pages.CustomerDashboardPage;
+import com.revature.pages.HomePage;
 import com.revature.pages.LoginPage;
 import com.revature.pages.OrderPage;
 import io.cucumber.junit.Cucumber;
@@ -22,8 +25,11 @@ public class BasicRunner {
 
     public static WebDriver driver = null;
     public static LoginPage loginPage = null;
-    public static OrderPage orderPage = null;
+    public static CreateAccountPage createAccountPage = null;
+    public static HomePage homePage = null;
+    public static CustomerDashboardPage customerDashboardPage = null;
     public static int rowCount = 0;
+    public static int orderQuantity = 0;
 
     @BeforeClass
     public static void setup() {
@@ -35,10 +41,10 @@ public class BasicRunner {
         options.addArguments("--allow-running-insecure-content");
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         driver = new ChromeDriver(capabilities);
-
-
         loginPage = new LoginPage(driver);
-        orderPage = new OrderPage(driver);
+        createAccountPage = new CreateAccountPage(driver);
+        homePage = new HomePage(driver);
+        customerDashboardPage = new CustomerDashboardPage(driver);
     }
 
     @AfterClass

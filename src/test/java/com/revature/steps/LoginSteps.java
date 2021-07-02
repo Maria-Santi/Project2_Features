@@ -4,7 +4,6 @@ import com.revature.runners.BasicRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -12,7 +11,7 @@ import org.testng.Assert;
 public class LoginSteps {
     @Given("The User is on the Login Page")
     public void the_User_is_on_the_Login_Page() {
-        BasicRunner.driver.get("C:\\Users\\david\\Desktop\\Project2_FrontEnd\\login.html");
+        BasicRunner.driver.get("https://project2frontend.s3.us-east-2.amazonaws.com/login.html");
     }
 
     @When("The User types {string} into the username bar")
