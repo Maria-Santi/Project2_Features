@@ -4,6 +4,7 @@ import com.revature.runners.BasicRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -27,6 +28,14 @@ public class LoginSteps {
     @When("The User clicks the login button")
     public void the_User_clicks_the_login_button() {
         BasicRunner.loginPage.loginButton.click();
+    }
+
+    @When("The User clicks the login button and accepts the alert")
+    public void the_User_clicks_the_login_button_and_accepts_the_alert() {
+        BasicRunner.loginPage.loginButton.click();
+        WebDriverWait wait = new WebDriverWait(BasicRunner.driver, 5);
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.accept();
     }
 
     @Then("The title should be {string}")
